@@ -13,4 +13,5 @@
     <color name="choco_700">#793802</color>
     <color name="choco_500">#6E492A</color>
     <color name="choco_200">#6A5544</color>
+    <color name="black_transparent">#8A000000</color>
 </resources>

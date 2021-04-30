@@ -32,25 +32,25 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/m_item_shop"
+            android:id="@+id/menu_movies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:bt_colorActive="@color/white"
             app:bt_colorInactive="@color/orange_700"
             app:bt_shape="@drawable/background_rounded"
-            app:bt_icon="@drawable/ic_launcher_background"
+            app:bt_icon="@drawable/ic_movie"
             app:bt_title="@string/movies" />
 
         <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/m_item_photos"
+            android:id="@+id/menu_tv_shows"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:bt_colorActive="@color/white"
             app:bt_colorInactive="@color/orange_700"
             app:bt_shape="@drawable/background_rounded"
-            app:bt_icon="@drawable/ic_launcher_background"
+            app:bt_icon="@drawable/ic_tv_show"
             app:bt_title="@string/tv_shows" />
 
     </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
