@@ -18,12 +18,8 @@ class HomeActivity : AppCompatActivity() {
         setupViewPager()
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     private fun setupViewPager(){
         b.viewpager.adapter = PagerAdapter(supportFragmentManager)
-        b.viewpager.setOnTouchListener { _, _ ->
-            return@setOnTouchListener true
-        }
         b.bnv.setNavigationChangeListener { _, position ->
             b.viewpager.setCurrentItem(position, true)
         }

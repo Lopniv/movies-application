@@ -1,5 +1,9 @@
 package com.lopniv.movie.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Item(
     val title: String,
     val year: String,
@@ -8,4 +12,4 @@ data class Item(
     val score: String,
     val genre: String,
     val description: String
-)
+) : Parcelable

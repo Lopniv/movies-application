@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="dark_grey">#0C0C0C</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange_700">#FFCE67</color>
     <color name="orange_500">#FFDD95</color>
@@ -13,5 +14,7 @@
     <color name="choco_700">#793802</color>
     <color name="choco_500">#6E492A</color>
     <color name="choco_200">#6A5544</color>
+    <color name="transparent">#00000000</color>
     <color name="black_transparent">#8A000000</color>
+    <color name="black_transparent_2">#D5000000</color>
 </resources>

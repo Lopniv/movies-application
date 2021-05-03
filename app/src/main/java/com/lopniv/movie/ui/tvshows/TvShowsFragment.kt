@@ -1,4 +1,4 @@
-package com.lopniv.movie.ui.movies
+package com.lopniv.movie.ui.tvshows
 
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -10,23 +10,20 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.lopniv.movie.adapter.ItemListAdapter
-import com.lopniv.movie.databinding.FragmentMoviesBinding
+import com.lopniv.movie.databinding.FragmentTvShowsBinding
 
+class TvShowsFragment : Fragment() {
 
-class MoviesFragment : Fragment() {
-
-    private var binding: FragmentMoviesBinding? = null
+    private var binding: FragmentTvShowsBinding? = null
     private val b get() = binding!!
     private var imagesBackground: ArrayList<Bitmap> = arrayListOf()
 
     private lateinit var adapter: ItemListAdapter
-    private lateinit var viewModel: MoviesViewModel
+    private lateinit var viewModel: TvShowsViewModel
 
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentMoviesBinding.inflate(inflater, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View {
+        binding = FragmentTvShowsBinding.inflate(inflater, container, false)
         return b.root
     }
 
@@ -38,11 +35,11 @@ class MoviesFragment : Fragment() {
 
     private fun initiate() {
         adapter = ItemListAdapter(arrayListOf(), requireActivity())
-        viewModel = ViewModelProvider(requireActivity()).get(MoviesViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(TvShowsViewModel::class.java)
     }
 
     private fun setupViewPager() {
-        viewModel.addItemMovies()
+        viewModel.addItemTvShows()
         viewModel.blurImages(requireContext())
         viewModel.returnItemList().observe(viewLifecycleOwner, { item ->
             adapter.updateItem(item)
