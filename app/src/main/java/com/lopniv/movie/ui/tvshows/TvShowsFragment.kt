@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.lopniv.movie.adapter.ItemListAdapter
+import com.lopniv.movie.adapter.ItemListAdapter.Companion.KEY_TV_SHOWS
 import com.lopniv.movie.databinding.FragmentTvShowsBinding
 
 class TvShowsFragment : Fragment() {
@@ -34,26 +35,20 @@ class TvShowsFragment : Fragment() {
     }
 
     private fun initiate() {
-        adapter = ItemListAdapter(arrayListOf(), requireActivity())
+        adapter = ItemListAdapter(arrayListOf(), requireActivity(), KEY_TV_SHOWS)
         viewModel = ViewModelProvider(requireActivity()).get(TvShowsViewModel::class.java)
     }
 
     private fun setupViewPager() {
-        viewModel.addItemTvShows()
-        viewModel.blurImages(requireContext())
-        viewModel.returnItemList().observe(viewLifecycleOwner, { item ->
-            adapter.updateItem(item)
-        })
-        viewModel.returnImagesList().observe(viewLifecycleOwner, { images ->
-            imagesBackground = images
-        })
-        b.viewPager.adapter = adapter
-        b.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        adapter.updateItem(viewModel.getItemTvShows())
+        imagesBackground = viewModel.getItemBlurTvShows(requireContext())
+        b.viewPagerTvShows.adapter = adapter
+        b.viewPagerTvShows.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 if (position < adapter.count - 1 && position < imagesBackground.size - 1) {
-                    b.viewPager.background = BitmapDrawable(resources, imagesBackground[position])
+                    b.viewPagerTvShows.background = BitmapDrawable(resources, imagesBackground[position])
                 } else {
-                    b.viewPager.background = BitmapDrawable(resources, imagesBackground[imagesBackground.size - 1])
+                    b.viewPagerTvShows.background = BitmapDrawable(resources, imagesBackground[imagesBackground.size - 1])
                 }
             }
             override fun onPageScrollStateChanged(state: Int) {}

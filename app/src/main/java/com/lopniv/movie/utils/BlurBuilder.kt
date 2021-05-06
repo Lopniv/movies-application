@@ -1,4 +1,4 @@
-package com.lopniv.movie.ui
+package com.lopniv.movie.utils
 
 import android.content.Context
 import android.graphics.Bitmap

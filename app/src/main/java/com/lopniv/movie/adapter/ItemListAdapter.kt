@@ -2,7 +2,6 @@ package com.lopniv.movie.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,18 @@ import androidx.annotation.NonNull
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import androidx.viewpager.widget.PagerAdapter
-import com.google.android.material.card.MaterialCardView
 import com.lopniv.movie.R
 import com.lopniv.movie.model.Item
-import com.lopniv.movie.ui.DetailActivity
-import com.lopniv.movie.ui.DetailActivity.Companion.KEY_DETAIL
+import com.lopniv.movie.ui.detail.DetailActivity
+import com.lopniv.movie.ui.detail.DetailActivity.Companion.KEY_DETAIL
+import com.lopniv.movie.ui.detail.DetailActivity.Companion.KEY_POSITION
 
-class ItemListAdapter(var items: ArrayList<Item>, var context: Context) : PagerAdapter() {
+class ItemListAdapter(var items: ArrayList<Item>, var context: Context, var fragment: String) : PagerAdapter() {
+
+    companion object {
+        const val KEY_MOVIES = "MOVIES"
+        const val KEY_TV_SHOWS = "TV SHOW"
+    }
 
     fun updateItem(item: ArrayList<Item>) {
         items.clear()
@@ -43,8 +47,15 @@ class ItemListAdapter(var items: ArrayList<Item>, var context: Context) : PagerA
         tvScore.text = items[position].score
         cvItem.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra(KEY_DETAIL, items[position])
-            context.startActivity(intent)
+            if (fragment == KEY_MOVIES){
+                intent.putExtra(KEY_DETAIL, KEY_MOVIES)
+                intent.putExtra(KEY_POSITION, position)
+                context.startActivity(intent)
+            } else {
+                intent.putExtra(KEY_DETAIL, KEY_TV_SHOWS)
+                intent.putExtra(KEY_POSITION, position)
+                context.startActivity(intent)
+            }
         }
         container.addView(view, 0)
         return view

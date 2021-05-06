@@ -1,9 +1,7 @@
 package com.lopniv.movie.ui
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.lopniv.movie.R
+import androidx.appcompat.app.AppCompatActivity
 import com.lopniv.movie.adapter.PagerAdapter
 import com.lopniv.movie.databinding.ActivityHomeBinding
 
@@ -19,9 +17,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager(){
-        b.viewpager.adapter = PagerAdapter(supportFragmentManager)
+        b.viewPagerPlaceholder.adapter = PagerAdapter(supportFragmentManager)
         b.bnv.setNavigationChangeListener { _, position ->
-            b.viewpager.setCurrentItem(position, true)
+            b.viewPagerPlaceholder.setCurrentItem(position, true)
         }
     }
 }

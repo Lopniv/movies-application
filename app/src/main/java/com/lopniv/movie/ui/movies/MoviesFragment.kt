@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.lopniv.movie.adapter.ItemListAdapter
+import com.lopniv.movie.adapter.ItemListAdapter.Companion.KEY_MOVIES
 import com.lopniv.movie.databinding.FragmentMoviesBinding
 
 
@@ -37,26 +38,22 @@ class MoviesFragment : Fragment() {
     }
 
     private fun initiate() {
-        adapter = ItemListAdapter(arrayListOf(), requireActivity())
+        adapter = ItemListAdapter(arrayListOf(), requireActivity(), KEY_MOVIES)
         viewModel = ViewModelProvider(requireActivity()).get(MoviesViewModel::class.java)
     }
 
     private fun setupViewPager() {
-        viewModel.addItemMovies()
-        viewModel.blurImages(requireContext())
-        viewModel.returnItemList().observe(viewLifecycleOwner, { item ->
-            adapter.updateItem(item)
-        })
-        viewModel.returnImagesList().observe(viewLifecycleOwner, { images ->
-            imagesBackground = images
-        })
-        b.viewPager.adapter = adapter
-        b.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        viewModel.getItemMovies()
+        viewModel.getItemBlurMovies(requireContext())
+        adapter.updateItem(viewModel.getItemMovies())
+        imagesBackground = viewModel.getItemBlurMovies(requireContext())
+        b.viewPagerMovies.adapter = adapter
+        b.viewPagerMovies.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 if (position < adapter.count - 1 && position < imagesBackground.size - 1) {
-                    b.viewPager.background = BitmapDrawable(resources, imagesBackground[position])
+                    b.viewPagerMovies.background = BitmapDrawable(resources, imagesBackground[position])
                 } else {
-                    b.viewPager.background = BitmapDrawable(resources, imagesBackground[imagesBackground.size - 1])
+                    b.viewPagerMovies.background = BitmapDrawable(resources, imagesBackground[imagesBackground.size - 1])
                 }
             }
             override fun onPageScrollStateChanged(state: Int) {}

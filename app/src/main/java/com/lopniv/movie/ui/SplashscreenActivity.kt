@@ -12,7 +12,7 @@ class SplashscreenActivity : AppCompatActivity() {
     private lateinit var b: ActivitySplashscreenBinding
 
     companion object {
-        private const val TIME_LENGTH = 1000
+        private const val TIME_LENGTH = 3000
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
