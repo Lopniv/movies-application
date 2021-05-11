@@ -1,9 +1,9 @@
-package com.lopniv.movie.ui
+package com.lopniv.movie.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.lopniv.movie.adapter.PagerAdapter
 import com.lopniv.movie.databinding.ActivityHomeBinding
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager(){
-        b.viewPagerPlaceholder.adapter = PagerAdapter(supportFragmentManager)
+        b.viewPagerPlaceholder.adapter = ViewPagerAdapter(supportFragmentManager)
         b.bnv.setNavigationChangeListener { _, position ->
             b.viewPagerPlaceholder.setCurrentItem(position, true)
         }

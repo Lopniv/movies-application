@@ -1,8 +1,8 @@
 package com.lopniv.movie.ui.detail
 
 import androidx.lifecycle.ViewModel
-import com.lopniv.movie.adapter.ItemListAdapter.Companion.KEY_MOVIES
-import com.lopniv.movie.model.Item
+import com.lopniv.movie.ui.movies.MoviesListAdapter.Companion.KEY_MOVIES
+import com.lopniv.movie.data.source.local.entity.Item
 import com.lopniv.movie.utils.DataDummy
 
 class DetailViewModel : ViewModel() {

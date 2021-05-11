@@ -9,9 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
-import com.lopniv.movie.adapter.ItemListAdapter
-import com.lopniv.movie.adapter.ItemListAdapter.Companion.KEY_MOVIES
 import com.lopniv.movie.databinding.FragmentMoviesBinding
+import com.lopniv.movie.viewmodel.ViewModelFactory
 
 
 class MoviesFragment : Fragment() {
@@ -20,7 +19,7 @@ class MoviesFragment : Fragment() {
     private val b get() = binding!!
     private var imagesBackground: ArrayList<Bitmap> = arrayListOf()
 
-    private lateinit var adapter: ItemListAdapter
+    private lateinit var adapter: MoviesListAdapter
     private lateinit var viewModel: MoviesViewModel
 
     override fun onCreateView(
@@ -31,21 +30,24 @@ class MoviesFragment : Fragment() {
         return b.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initiate()
         setupViewPager()
     }
 
     private fun initiate() {
-        adapter = ItemListAdapter(arrayListOf(), requireActivity(), KEY_MOVIES)
-        viewModel = ViewModelProvider(requireActivity()).get(MoviesViewModel::class.java)
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        viewModel = ViewModelProvider(this, factory)[MoviesViewModel::class.java]
+        adapter = MoviesListAdapter(arrayListOf(), requireActivity())
+        //viewModel = ViewModelProvider(requireActivity()).get(MoviesViewModel::class.java)
     }
 
     private fun setupViewPager() {
         viewModel.getItemMovies()
         viewModel.getItemBlurMovies(requireContext())
-        adapter.updateItem(viewModel.getItemMovies())
+        //adapter.updateItem(viewModel.getItemMovies())
+        adapter.updateItem(viewModel.getMoviesPopular())
         imagesBackground = viewModel.getItemBlurMovies(requireContext())
         b.viewPagerMovies.adapter = adapter
         b.viewPagerMovies.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {

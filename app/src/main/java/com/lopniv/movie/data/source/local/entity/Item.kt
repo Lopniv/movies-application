@@ -1,4 +1,4 @@
-package com.lopniv.movie.model
+package com.lopniv.movie.data.source.local.entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

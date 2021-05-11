@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
-import com.lopniv.movie.adapter.ItemListAdapter
-import com.lopniv.movie.adapter.ItemListAdapter.Companion.KEY_TV_SHOWS
 import com.lopniv.movie.databinding.FragmentTvShowsBinding
 
 class TvShowsFragment : Fragment() {
@@ -19,7 +17,7 @@ class TvShowsFragment : Fragment() {
     private val b get() = binding!!
     private var imagesBackground: ArrayList<Bitmap> = arrayListOf()
 
-    private lateinit var adapter: ItemListAdapter
+    private lateinit var adapter: TvShowsAdapter
     private lateinit var viewModel: TvShowsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +33,7 @@ class TvShowsFragment : Fragment() {
     }
 
     private fun initiate() {
-        adapter = ItemListAdapter(arrayListOf(), requireActivity(), KEY_TV_SHOWS)
+        adapter = TvShowsAdapter(arrayListOf(), requireActivity())
         viewModel = ViewModelProvider(requireActivity()).get(TvShowsViewModel::class.java)
     }
 

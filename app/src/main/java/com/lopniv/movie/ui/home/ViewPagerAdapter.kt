@@ -1,4 +1,4 @@
-package com.lopniv.movie.adapter
+package com.lopniv.movie.ui.home
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.lopniv.movie.ui.movies.MoviesFragment
 import com.lopniv.movie.ui.tvshows.TvShowsFragment
 
-class PagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+class ViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
 
     private val pages = listOf(
         MoviesFragment(),

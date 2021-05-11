@@ -1,6 +1,6 @@
 package com.lopniv.movie.ui.detail
 
-import com.lopniv.movie.adapter.ItemListAdapter.Companion.KEY_MOVIES
+import com.lopniv.movie.ui.movies.MoviesListAdapter.Companion.KEY_MOVIES
 import com.lopniv.movie.utils.DataDummy
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull

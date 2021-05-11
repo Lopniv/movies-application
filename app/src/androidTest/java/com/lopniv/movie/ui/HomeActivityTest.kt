@@ -6,6 +6,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.lopniv.movie.R
+import com.lopniv.movie.ui.home.HomeActivity
 import org.junit.Rule
 import org.junit.Test
 

@@ -6,10 +6,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.lopniv.movie.R
-import com.lopniv.movie.adapter.ItemListAdapter.Companion.KEY_MOVIES
-import com.lopniv.movie.adapter.ItemListAdapter.Companion.KEY_TV_SHOWS
+import com.lopniv.movie.ui.movies.MoviesListAdapter.Companion.KEY_MOVIES
 import com.lopniv.movie.databinding.ActivityDetailBinding
-import com.lopniv.movie.model.Item
+import com.lopniv.movie.data.source.local.entity.Item
+import com.lopniv.movie.ui.tvshows.TvShowsAdapter.Companion.KEY_TV_SHOWS
 
 class DetailActivity : AppCompatActivity(), View.OnClickListener {
 

@@ -1,4 +1,4 @@
-package com.lopniv.movie.adapter
+package com.lopniv.movie.ui.tvshows
 
 import android.content.Context
 import android.content.Intent
@@ -11,15 +11,12 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import androidx.viewpager.widget.PagerAdapter
 import com.lopniv.movie.R
-import com.lopniv.movie.model.Item
+import com.lopniv.movie.data.source.local.entity.Item
 import com.lopniv.movie.ui.detail.DetailActivity
-import com.lopniv.movie.ui.detail.DetailActivity.Companion.KEY_DETAIL
-import com.lopniv.movie.ui.detail.DetailActivity.Companion.KEY_POSITION
 
-class ItemListAdapter(var items: ArrayList<Item>, var context: Context, var fragment: String) : PagerAdapter() {
+class TvShowsAdapter(var items: ArrayList<Item>, var context: Context) : PagerAdapter() {
 
     companion object {
-        const val KEY_MOVIES = "MOVIES"
         const val KEY_TV_SHOWS = "TV SHOW"
     }
 
@@ -47,15 +44,9 @@ class ItemListAdapter(var items: ArrayList<Item>, var context: Context, var frag
         tvScore.text = items[position].score
         cvItem.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
-            if (fragment == KEY_MOVIES){
-                intent.putExtra(KEY_DETAIL, KEY_MOVIES)
-                intent.putExtra(KEY_POSITION, position)
-                context.startActivity(intent)
-            } else {
-                intent.putExtra(KEY_DETAIL, KEY_TV_SHOWS)
-                intent.putExtra(KEY_POSITION, position)
-                context.startActivity(intent)
-            }
+            intent.putExtra(DetailActivity.KEY_DETAIL, KEY_TV_SHOWS)
+            intent.putExtra(DetailActivity.KEY_POSITION, position)
+            context.startActivity(intent)
         }
         container.addView(view, 0)
         return view
