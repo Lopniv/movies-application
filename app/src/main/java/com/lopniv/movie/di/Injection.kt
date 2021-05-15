@@ -1,14 +1,13 @@
 package com.lopniv.movie.di
 
-import android.content.Context
-import com.lopniv.movie.api.UsersService
 import com.lopniv.movie.data.source.MoviesRepository
 import com.lopniv.movie.data.source.remote.RemoteDataSource
+import com.lopniv.movie.utils.DataHelper
 
 object Injection {
-    fun provideRepository(context: Context): MoviesRepository {
+    fun provideRepository(): MoviesRepository {
 
-        val remoteDataSource = RemoteDataSource.getInstance(UsersService())
+        val remoteDataSource = RemoteDataSource.getInstance(DataHelper())
 
         return MoviesRepository.getInstance(remoteDataSource)
     }

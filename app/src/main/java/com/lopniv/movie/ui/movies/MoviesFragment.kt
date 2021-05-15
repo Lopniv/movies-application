@@ -19,7 +19,7 @@ class MoviesFragment : Fragment() {
     private val b get() = binding!!
     private var imagesBackground: ArrayList<Bitmap> = arrayListOf()
 
-    private lateinit var adapter: MoviesListAdapter
+    private lateinit var moviesAdapter: MoviesListAdapter
     private lateinit var viewModel: MoviesViewModel
 
     override fun onCreateView(
@@ -39,7 +39,7 @@ class MoviesFragment : Fragment() {
     private fun initiate() {
         val factory = ViewModelFactory.getInstance(requireActivity())
         viewModel = ViewModelProvider(this, factory)[MoviesViewModel::class.java]
-        adapter = MoviesListAdapter(arrayListOf(), requireActivity())
+        moviesAdapter = MoviesListAdapter(arrayListOf(), requireActivity())
         //viewModel = ViewModelProvider(requireActivity()).get(MoviesViewModel::class.java)
     }
 
@@ -47,12 +47,14 @@ class MoviesFragment : Fragment() {
         viewModel.getItemMovies()
         viewModel.getItemBlurMovies(requireContext())
         //adapter.updateItem(viewModel.getItemMovies())
-        adapter.updateItem(viewModel.getMoviesPopular())
+        moviesAdapter.updateItem(viewModel.getMoviesPopular())
         imagesBackground = viewModel.getItemBlurMovies(requireContext())
-        b.viewPagerMovies.adapter = adapter
+        with(b.viewPagerMovies){
+            adapter = moviesAdapter
+        }
         b.viewPagerMovies.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                if (position < adapter.count - 1 && position < imagesBackground.size - 1) {
+                if (position < moviesAdapter.count - 1 && position < imagesBackground.size - 1) {
                     b.viewPagerMovies.background = BitmapDrawable(resources, imagesBackground[position])
                 } else {
                     b.viewPagerMovies.background = BitmapDrawable(resources, imagesBackground[imagesBackground.size - 1])
