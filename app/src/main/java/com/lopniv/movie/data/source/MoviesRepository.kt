@@ -12,7 +12,7 @@ class MoviesRepository private constructor(private val remoteDataSource: RemoteD
 
         fun getInstance(remoteData: RemoteDataSource): MoviesRepository =
             instance ?: synchronized(this) {
-                MoviesRepository(remoteData).apply { instance = this }
+                instance ?: MoviesRepository(remoteData).apply { instance = this }
             }
     }
 

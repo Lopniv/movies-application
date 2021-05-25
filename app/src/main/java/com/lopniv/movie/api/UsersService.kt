@@ -12,7 +12,7 @@ class UsersService {
         DaggerApiComponent.create().inject(this)
     }
 
-    fun getMoviesPopular(): Single<MoviesResponse> {
+    fun getMoviesPopular(): Call<MoviesResponse> {
         return api.getMoviesPopular()
     }
 }

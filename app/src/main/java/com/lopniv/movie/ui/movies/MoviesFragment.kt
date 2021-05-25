@@ -44,24 +44,25 @@ class MoviesFragment : Fragment() {
     }
 
     private fun setupViewPager() {
-        viewModel.getItemMovies()
-        viewModel.getItemBlurMovies(requireContext())
+//        viewModel.getItemMovies()
+//        viewModel.getItemBlurMovies(requireContext())
         //adapter.updateItem(viewModel.getItemMovies())
-        moviesAdapter.updateItem(viewModel.getMoviesPopular())
-        imagesBackground = viewModel.getItemBlurMovies(requireContext())
+        val listImages = viewModel.getMoviesPopular()
+        moviesAdapter.updateItem(listImages)
+//        imagesBackground = viewModel.getItemBlurMovies(requireContext())
         with(b.viewPagerMovies){
             adapter = moviesAdapter
         }
-        b.viewPagerMovies.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                if (position < moviesAdapter.count - 1 && position < imagesBackground.size - 1) {
-                    b.viewPagerMovies.background = BitmapDrawable(resources, imagesBackground[position])
-                } else {
-                    b.viewPagerMovies.background = BitmapDrawable(resources, imagesBackground[imagesBackground.size - 1])
-                }
-            }
-            override fun onPageScrollStateChanged(state: Int) {}
-            override fun onPageSelected(position: Int) {}
-        })
+//        b.viewPagerMovies.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+//            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+//                if (position < moviesAdapter.count - 1 && position < imagesBackground.size - 1) {
+//                    b.viewPagerMovies.background = BitmapDrawable(resources, imagesBackground[position])
+//                } else {
+//                    b.viewPagerMovies.background = BitmapDrawable(resources, imagesBackground[imagesBackground.size - 1])
+//                }
+//            }
+//            override fun onPageScrollStateChanged(state: Int) {}
+//            override fun onPageSelected(position: Int) {}
+//        })
     }
 }

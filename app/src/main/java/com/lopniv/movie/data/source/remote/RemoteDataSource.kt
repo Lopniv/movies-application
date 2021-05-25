@@ -11,11 +11,12 @@ class RemoteDataSource private constructor(private val dataHelper: DataHelper) {
 
         fun getInstance(dataHelper: DataHelper): RemoteDataSource =
             instance ?: synchronized(this) {
-                RemoteDataSource(dataHelper).apply { instance = this }
+                instance ?: RemoteDataSource(dataHelper).apply { instance = this }
             }
     }
 
     fun getMoviesPopular(): ArrayList<Movie> {
+        //dataHelper.loadData()
         return dataHelper.getMoviePopular()
     }
 }
