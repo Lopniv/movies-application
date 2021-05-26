@@ -1,6 +1,8 @@
 package com.lopniv.movie.api
 
 import com.lopniv.movie.BuildConfig.BASE_URL
+import com.lopniv.movie.data.source.MoviesRepository
+import com.lopniv.movie.data.source.remote.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -21,5 +23,15 @@ class ApiModule {
     @Provides()
     fun provideUsersService(): UsersService {
         return UsersService()
+    }
+
+    @Provides
+    fun provideRemoteDataSource(): RemoteDataSource {
+        return RemoteDataSource()
+    }
+
+    @Provides
+    fun provideMoviesRepository(): MoviesRepository {
+        return MoviesRepository()
     }
 }
