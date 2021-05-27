@@ -2,7 +2,6 @@ package com.lopniv.movie.ui.movies
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,7 @@ import androidx.annotation.NonNull
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import androidx.viewpager.widget.PagerAdapter
-import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.Target
 import com.lopniv.movie.R
 import com.lopniv.movie.data.source.local.entity.Movie
 import com.lopniv.movie.ui.detail.DetailActivity
@@ -58,7 +55,7 @@ class MoviesListAdapter(var items: ArrayList<Movie>, var context: Context) : Pag
             .placeholder(R.mipmap.ic_launcher_round)
             .error(R.mipmap.ic_launcher_round)
 
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500${items[position].imageUrl}").apply(options).into(ivItem)
+        //Glide.with(context).load("https://image.tmdb.org/t/p/w500${items[position].imageUrl}").apply(options).into(ivItem)
         //ivItem.setImageResource(items[position].image)
         tvScore.text = items[position].rating.toString()
         cvItem.setOnClickListener {

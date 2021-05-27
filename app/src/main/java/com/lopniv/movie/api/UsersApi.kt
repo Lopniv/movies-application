@@ -9,5 +9,5 @@ interface UsersApi {
 
     @Headers("Accept: application/json")
     @GET("movie/popular?api_key=23ebd4f5f215f63e4bf98097180d56ea&language=en-US&page=1")
-    fun getMoviesPopular(): Single<MoviesResponse>
+    fun getMoviesPopular(): Call<MoviesResponse>
 }
